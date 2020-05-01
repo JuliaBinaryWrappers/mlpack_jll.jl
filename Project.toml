@@ -1,6 +1,6 @@
 name = "mlpack_jll"
 uuid = "156a7db3-27ba-586e-a86b-f061da4f95ea"
-version = "3.3.0+3"
+version = "3.3.1+0"
 
 [deps]
 Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
