@@ -4,1063 +4,351 @@ export libmlpack, libmlpack_julia_adaboost, libmlpack_julia_approx_kfn, libmlpac
 using boost_jll
 using armadillo_jll
 using OpenBLAS_jll
-## Global variables
-PATH = ""
-LIBPATH = ""
-LIBPATH_env = "PATH"
-LIBPATH_default = ""
-
-# Relative path to `libmlpack`
-const libmlpack_splitpath = ["bin", "libmlpack.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_path = ""
-
-# libmlpack-specific global declaration
-# This will be filled out by __init__()
-libmlpack_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack = "libmlpack.dll"
-
-
-# Relative path to `libmlpack_julia_adaboost`
-const libmlpack_julia_adaboost_splitpath = ["bin", "libmlpack_julia_adaboost.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_adaboost_path = ""
-
-# libmlpack_julia_adaboost-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_adaboost_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_adaboost = "libmlpack_julia_adaboost.dll"
-
-
-# Relative path to `libmlpack_julia_approx_kfn`
-const libmlpack_julia_approx_kfn_splitpath = ["bin", "libmlpack_julia_approx_kfn.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_approx_kfn_path = ""
-
-# libmlpack_julia_approx_kfn-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_approx_kfn_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_approx_kfn = "libmlpack_julia_approx_kfn.dll"
-
-
-# Relative path to `libmlpack_julia_bayesian_linear_regression`
-const libmlpack_julia_bayesian_linear_regression_splitpath = ["bin", "libmlpack_julia_bayesian_linear_regression.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_bayesian_linear_regression_path = ""
-
-# libmlpack_julia_bayesian_linear_regression-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_bayesian_linear_regression_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_bayesian_linear_regression = "libmlpack_julia_bayesian_linear_regression.dll"
-
-
-# Relative path to `libmlpack_julia_cf`
-const libmlpack_julia_cf_splitpath = ["bin", "libmlpack_julia_cf.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_cf_path = ""
-
-# libmlpack_julia_cf-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_cf_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_cf = "libmlpack_julia_cf.dll"
-
-
-# Relative path to `libmlpack_julia_dbscan`
-const libmlpack_julia_dbscan_splitpath = ["bin", "libmlpack_julia_dbscan.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_dbscan_path = ""
-
-# libmlpack_julia_dbscan-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_dbscan_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_dbscan = "libmlpack_julia_dbscan.dll"
-
-
-# Relative path to `libmlpack_julia_decision_stump`
-const libmlpack_julia_decision_stump_splitpath = ["bin", "libmlpack_julia_decision_stump.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_decision_stump_path = ""
-
-# libmlpack_julia_decision_stump-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_decision_stump_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_decision_stump = "libmlpack_julia_decision_stump.dll"
-
-
-# Relative path to `libmlpack_julia_decision_tree`
-const libmlpack_julia_decision_tree_splitpath = ["bin", "libmlpack_julia_decision_tree.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_decision_tree_path = ""
-
-# libmlpack_julia_decision_tree-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_decision_tree_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_decision_tree = "libmlpack_julia_decision_tree.dll"
-
-
-# Relative path to `libmlpack_julia_det`
-const libmlpack_julia_det_splitpath = ["bin", "libmlpack_julia_det.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_det_path = ""
-
-# libmlpack_julia_det-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_det_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_det = "libmlpack_julia_det.dll"
-
-
-# Relative path to `libmlpack_julia_emst`
-const libmlpack_julia_emst_splitpath = ["bin", "libmlpack_julia_emst.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_emst_path = ""
-
-# libmlpack_julia_emst-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_emst_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_emst = "libmlpack_julia_emst.dll"
-
-
-# Relative path to `libmlpack_julia_fastmks`
-const libmlpack_julia_fastmks_splitpath = ["bin", "libmlpack_julia_fastmks.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_fastmks_path = ""
-
-# libmlpack_julia_fastmks-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_fastmks_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_fastmks = "libmlpack_julia_fastmks.dll"
-
-
-# Relative path to `libmlpack_julia_gmm_generate`
-const libmlpack_julia_gmm_generate_splitpath = ["bin", "libmlpack_julia_gmm_generate.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_gmm_generate_path = ""
-
-# libmlpack_julia_gmm_generate-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_gmm_generate_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_gmm_generate = "libmlpack_julia_gmm_generate.dll"
-
-
-# Relative path to `libmlpack_julia_gmm_probability`
-const libmlpack_julia_gmm_probability_splitpath = ["bin", "libmlpack_julia_gmm_probability.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_gmm_probability_path = ""
-
-# libmlpack_julia_gmm_probability-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_gmm_probability_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_gmm_probability = "libmlpack_julia_gmm_probability.dll"
-
-
-# Relative path to `libmlpack_julia_gmm_train`
-const libmlpack_julia_gmm_train_splitpath = ["bin", "libmlpack_julia_gmm_train.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_gmm_train_path = ""
-
-# libmlpack_julia_gmm_train-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_gmm_train_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_gmm_train = "libmlpack_julia_gmm_train.dll"
-
-
-# Relative path to `libmlpack_julia_hmm_generate`
-const libmlpack_julia_hmm_generate_splitpath = ["bin", "libmlpack_julia_hmm_generate.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_hmm_generate_path = ""
-
-# libmlpack_julia_hmm_generate-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_hmm_generate_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_hmm_generate = "libmlpack_julia_hmm_generate.dll"
-
-
-# Relative path to `libmlpack_julia_hmm_loglik`
-const libmlpack_julia_hmm_loglik_splitpath = ["bin", "libmlpack_julia_hmm_loglik.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_hmm_loglik_path = ""
-
-# libmlpack_julia_hmm_loglik-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_hmm_loglik_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_hmm_loglik = "libmlpack_julia_hmm_loglik.dll"
-
-
-# Relative path to `libmlpack_julia_hmm_train`
-const libmlpack_julia_hmm_train_splitpath = ["bin", "libmlpack_julia_hmm_train.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_hmm_train_path = ""
-
-# libmlpack_julia_hmm_train-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_hmm_train_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_hmm_train = "libmlpack_julia_hmm_train.dll"
-
-
-# Relative path to `libmlpack_julia_hmm_viterbi`
-const libmlpack_julia_hmm_viterbi_splitpath = ["bin", "libmlpack_julia_hmm_viterbi.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_hmm_viterbi_path = ""
-
-# libmlpack_julia_hmm_viterbi-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_hmm_viterbi_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_hmm_viterbi = "libmlpack_julia_hmm_viterbi.dll"
-
-
-# Relative path to `libmlpack_julia_hoeffding_tree`
-const libmlpack_julia_hoeffding_tree_splitpath = ["bin", "libmlpack_julia_hoeffding_tree.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_hoeffding_tree_path = ""
-
-# libmlpack_julia_hoeffding_tree-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_hoeffding_tree_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_hoeffding_tree = "libmlpack_julia_hoeffding_tree.dll"
-
-
-# Relative path to `libmlpack_julia_image_converter`
-const libmlpack_julia_image_converter_splitpath = ["bin", "libmlpack_julia_image_converter.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_image_converter_path = ""
-
-# libmlpack_julia_image_converter-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_image_converter_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_image_converter = "libmlpack_julia_image_converter.dll"
-
-
-# Relative path to `libmlpack_julia_kde`
-const libmlpack_julia_kde_splitpath = ["bin", "libmlpack_julia_kde.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_kde_path = ""
-
-# libmlpack_julia_kde-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_kde_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_kde = "libmlpack_julia_kde.dll"
-
-
-# Relative path to `libmlpack_julia_kernel_pca`
-const libmlpack_julia_kernel_pca_splitpath = ["bin", "libmlpack_julia_kernel_pca.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_kernel_pca_path = ""
-
-# libmlpack_julia_kernel_pca-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_kernel_pca_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_kernel_pca = "libmlpack_julia_kernel_pca.dll"
-
-
-# Relative path to `libmlpack_julia_kfn`
-const libmlpack_julia_kfn_splitpath = ["bin", "libmlpack_julia_kfn.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_kfn_path = ""
-
-# libmlpack_julia_kfn-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_kfn_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_kfn = "libmlpack_julia_kfn.dll"
-
-
-# Relative path to `libmlpack_julia_kmeans`
-const libmlpack_julia_kmeans_splitpath = ["bin", "libmlpack_julia_kmeans.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_kmeans_path = ""
-
-# libmlpack_julia_kmeans-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_kmeans_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_kmeans = "libmlpack_julia_kmeans.dll"
-
-
-# Relative path to `libmlpack_julia_knn`
-const libmlpack_julia_knn_splitpath = ["bin", "libmlpack_julia_knn.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_knn_path = ""
-
-# libmlpack_julia_knn-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_knn_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_knn = "libmlpack_julia_knn.dll"
-
-
-# Relative path to `libmlpack_julia_krann`
-const libmlpack_julia_krann_splitpath = ["bin", "libmlpack_julia_krann.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_krann_path = ""
-
-# libmlpack_julia_krann-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_krann_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_krann = "libmlpack_julia_krann.dll"
-
-
-# Relative path to `libmlpack_julia_lars`
-const libmlpack_julia_lars_splitpath = ["bin", "libmlpack_julia_lars.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_lars_path = ""
-
-# libmlpack_julia_lars-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_lars_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_lars = "libmlpack_julia_lars.dll"
-
-
-# Relative path to `libmlpack_julia_linear_regression`
-const libmlpack_julia_linear_regression_splitpath = ["bin", "libmlpack_julia_linear_regression.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_linear_regression_path = ""
-
-# libmlpack_julia_linear_regression-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_linear_regression_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_linear_regression = "libmlpack_julia_linear_regression.dll"
-
-
-# Relative path to `libmlpack_julia_linear_svm`
-const libmlpack_julia_linear_svm_splitpath = ["bin", "libmlpack_julia_linear_svm.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_linear_svm_path = ""
-
-# libmlpack_julia_linear_svm-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_linear_svm_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_linear_svm = "libmlpack_julia_linear_svm.dll"
-
-
-# Relative path to `libmlpack_julia_lmnn`
-const libmlpack_julia_lmnn_splitpath = ["bin", "libmlpack_julia_lmnn.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_lmnn_path = ""
-
-# libmlpack_julia_lmnn-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_lmnn_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_lmnn = "libmlpack_julia_lmnn.dll"
-
-
-# Relative path to `libmlpack_julia_local_coordinate_coding`
-const libmlpack_julia_local_coordinate_coding_splitpath = ["bin", "libmlpack_julia_local_coordinate_coding.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_local_coordinate_coding_path = ""
-
-# libmlpack_julia_local_coordinate_coding-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_local_coordinate_coding_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_local_coordinate_coding = "libmlpack_julia_local_coordinate_coding.dll"
-
-
-# Relative path to `libmlpack_julia_logistic_regression`
-const libmlpack_julia_logistic_regression_splitpath = ["bin", "libmlpack_julia_logistic_regression.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_logistic_regression_path = ""
-
-# libmlpack_julia_logistic_regression-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_logistic_regression_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_logistic_regression = "libmlpack_julia_logistic_regression.dll"
-
-
-# Relative path to `libmlpack_julia_lsh`
-const libmlpack_julia_lsh_splitpath = ["bin", "libmlpack_julia_lsh.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_lsh_path = ""
-
-# libmlpack_julia_lsh-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_lsh_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_lsh = "libmlpack_julia_lsh.dll"
-
-
-# Relative path to `libmlpack_julia_mean_shift`
-const libmlpack_julia_mean_shift_splitpath = ["bin", "libmlpack_julia_mean_shift.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_mean_shift_path = ""
-
-# libmlpack_julia_mean_shift-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_mean_shift_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_mean_shift = "libmlpack_julia_mean_shift.dll"
-
-
-# Relative path to `libmlpack_julia_nbc`
-const libmlpack_julia_nbc_splitpath = ["bin", "libmlpack_julia_nbc.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_nbc_path = ""
-
-# libmlpack_julia_nbc-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_nbc_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_nbc = "libmlpack_julia_nbc.dll"
-
-
-# Relative path to `libmlpack_julia_nca`
-const libmlpack_julia_nca_splitpath = ["bin", "libmlpack_julia_nca.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_nca_path = ""
-
-# libmlpack_julia_nca-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_nca_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_nca = "libmlpack_julia_nca.dll"
-
-
-# Relative path to `libmlpack_julia_nmf`
-const libmlpack_julia_nmf_splitpath = ["bin", "libmlpack_julia_nmf.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_nmf_path = ""
-
-# libmlpack_julia_nmf-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_nmf_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_nmf = "libmlpack_julia_nmf.dll"
-
-
-# Relative path to `libmlpack_julia_pca`
-const libmlpack_julia_pca_splitpath = ["bin", "libmlpack_julia_pca.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_pca_path = ""
-
-# libmlpack_julia_pca-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_pca_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_pca = "libmlpack_julia_pca.dll"
-
-
-# Relative path to `libmlpack_julia_perceptron`
-const libmlpack_julia_perceptron_splitpath = ["bin", "libmlpack_julia_perceptron.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_perceptron_path = ""
-
-# libmlpack_julia_perceptron-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_perceptron_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_perceptron = "libmlpack_julia_perceptron.dll"
-
-
-# Relative path to `libmlpack_julia_preprocess_binarize`
-const libmlpack_julia_preprocess_binarize_splitpath = ["bin", "libmlpack_julia_preprocess_binarize.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_preprocess_binarize_path = ""
-
-# libmlpack_julia_preprocess_binarize-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_preprocess_binarize_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_preprocess_binarize = "libmlpack_julia_preprocess_binarize.dll"
-
-
-# Relative path to `libmlpack_julia_preprocess_describe`
-const libmlpack_julia_preprocess_describe_splitpath = ["bin", "libmlpack_julia_preprocess_describe.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_preprocess_describe_path = ""
-
-# libmlpack_julia_preprocess_describe-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_preprocess_describe_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_preprocess_describe = "libmlpack_julia_preprocess_describe.dll"
-
-
-# Relative path to `libmlpack_julia_preprocess_one_hot_encoding`
-const libmlpack_julia_preprocess_one_hot_encoding_splitpath = ["bin", "libmlpack_julia_preprocess_one_hot_encoding.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_preprocess_one_hot_encoding_path = ""
-
-# libmlpack_julia_preprocess_one_hot_encoding-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_preprocess_one_hot_encoding_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_preprocess_one_hot_encoding = "libmlpack_julia_preprocess_one_hot_encoding.dll"
-
-
-# Relative path to `libmlpack_julia_preprocess_scale`
-const libmlpack_julia_preprocess_scale_splitpath = ["bin", "libmlpack_julia_preprocess_scale.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_preprocess_scale_path = ""
-
-# libmlpack_julia_preprocess_scale-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_preprocess_scale_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_preprocess_scale = "libmlpack_julia_preprocess_scale.dll"
-
-
-# Relative path to `libmlpack_julia_preprocess_split`
-const libmlpack_julia_preprocess_split_splitpath = ["bin", "libmlpack_julia_preprocess_split.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_preprocess_split_path = ""
-
-# libmlpack_julia_preprocess_split-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_preprocess_split_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_preprocess_split = "libmlpack_julia_preprocess_split.dll"
-
-
-# Relative path to `libmlpack_julia_radical`
-const libmlpack_julia_radical_splitpath = ["bin", "libmlpack_julia_radical.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_radical_path = ""
-
-# libmlpack_julia_radical-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_radical_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_radical = "libmlpack_julia_radical.dll"
-
-
-# Relative path to `libmlpack_julia_random_forest`
-const libmlpack_julia_random_forest_splitpath = ["bin", "libmlpack_julia_random_forest.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_random_forest_path = ""
-
-# libmlpack_julia_random_forest-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_random_forest_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_random_forest = "libmlpack_julia_random_forest.dll"
-
-
-# Relative path to `libmlpack_julia_softmax_regression`
-const libmlpack_julia_softmax_regression_splitpath = ["bin", "libmlpack_julia_softmax_regression.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_softmax_regression_path = ""
-
-# libmlpack_julia_softmax_regression-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_softmax_regression_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_softmax_regression = "libmlpack_julia_softmax_regression.dll"
-
-
-# Relative path to `libmlpack_julia_sparse_coding`
-const libmlpack_julia_sparse_coding_splitpath = ["bin", "libmlpack_julia_sparse_coding.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_sparse_coding_path = ""
-
-# libmlpack_julia_sparse_coding-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_sparse_coding_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_sparse_coding = "libmlpack_julia_sparse_coding.dll"
-
-
-# Relative path to `libmlpack_julia_util`
-const libmlpack_julia_util_splitpath = ["bin", "libmlpack_julia_util.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libmlpack_julia_util_path = ""
-
-# libmlpack_julia_util-specific global declaration
-# This will be filled out by __init__()
-libmlpack_julia_util_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libmlpack_julia_util = "libmlpack_julia_util.dll"
-
-
-# Inform that the wrapper is available for this platform
-wrapper_available = true
-
-"""
-Open all libraries
-"""
+JLLWrappers.@generate_wrapper_header("mlpack")
+JLLWrappers.@declare_library_product(libmlpack, "libmlpack.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_adaboost, "libmlpack_julia_adaboost.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_approx_kfn, "libmlpack_julia_approx_kfn.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_bayesian_linear_regression, "libmlpack_julia_bayesian_linear_regression.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_cf, "libmlpack_julia_cf.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_dbscan, "libmlpack_julia_dbscan.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_decision_stump, "libmlpack_julia_decision_stump.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_decision_tree, "libmlpack_julia_decision_tree.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_det, "libmlpack_julia_det.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_emst, "libmlpack_julia_emst.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_fastmks, "libmlpack_julia_fastmks.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_gmm_generate, "libmlpack_julia_gmm_generate.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_gmm_probability, "libmlpack_julia_gmm_probability.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_gmm_train, "libmlpack_julia_gmm_train.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_hmm_generate, "libmlpack_julia_hmm_generate.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_hmm_loglik, "libmlpack_julia_hmm_loglik.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_hmm_train, "libmlpack_julia_hmm_train.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_hmm_viterbi, "libmlpack_julia_hmm_viterbi.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_hoeffding_tree, "libmlpack_julia_hoeffding_tree.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_image_converter, "libmlpack_julia_image_converter.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_kde, "libmlpack_julia_kde.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_kernel_pca, "libmlpack_julia_kernel_pca.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_kfn, "libmlpack_julia_kfn.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_kmeans, "libmlpack_julia_kmeans.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_knn, "libmlpack_julia_knn.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_krann, "libmlpack_julia_krann.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_lars, "libmlpack_julia_lars.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_linear_regression, "libmlpack_julia_linear_regression.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_linear_svm, "libmlpack_julia_linear_svm.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_lmnn, "libmlpack_julia_lmnn.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_local_coordinate_coding, "libmlpack_julia_local_coordinate_coding.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_logistic_regression, "libmlpack_julia_logistic_regression.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_lsh, "libmlpack_julia_lsh.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_mean_shift, "libmlpack_julia_mean_shift.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_nbc, "libmlpack_julia_nbc.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_nca, "libmlpack_julia_nca.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_nmf, "libmlpack_julia_nmf.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_pca, "libmlpack_julia_pca.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_perceptron, "libmlpack_julia_perceptron.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_preprocess_binarize, "libmlpack_julia_preprocess_binarize.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_preprocess_describe, "libmlpack_julia_preprocess_describe.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_preprocess_one_hot_encoding, "libmlpack_julia_preprocess_one_hot_encoding.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_preprocess_scale, "libmlpack_julia_preprocess_scale.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_preprocess_split, "libmlpack_julia_preprocess_split.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_radical, "libmlpack_julia_radical.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_random_forest, "libmlpack_julia_random_forest.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_softmax_regression, "libmlpack_julia_softmax_regression.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_sparse_coding, "libmlpack_julia_sparse_coding.dll")
+JLLWrappers.@declare_library_product(libmlpack_julia_util, "libmlpack_julia_util.dll")
 function __init__()
-    # This either calls `@artifact_str()`, or returns a constant string if we're overridden.
-    global artifact_dir = find_artifact_dir()
-
-    global PATH_list, LIBPATH_list
-    # Initialize PATH and LIBPATH environment variable listings
-    # From the list of our dependencies, generate a tuple of all the PATH and LIBPATH lists,
-    # then append them to our own.
-    foreach(p -> append!(PATH_list, p), (boost_jll.PATH_list, armadillo_jll.PATH_list, OpenBLAS_jll.PATH_list,))
-    foreach(p -> append!(LIBPATH_list, p), (boost_jll.LIBPATH_list, armadillo_jll.LIBPATH_list, OpenBLAS_jll.LIBPATH_list,))
-
-    global libmlpack_path = normpath(joinpath(artifact_dir, libmlpack_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_handle = dlopen(libmlpack_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_path))
-
-    global libmlpack_julia_adaboost_path = normpath(joinpath(artifact_dir, libmlpack_julia_adaboost_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_adaboost_handle = dlopen(libmlpack_julia_adaboost_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_adaboost_path))
-
-    global libmlpack_julia_approx_kfn_path = normpath(joinpath(artifact_dir, libmlpack_julia_approx_kfn_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_approx_kfn_handle = dlopen(libmlpack_julia_approx_kfn_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_approx_kfn_path))
-
-    global libmlpack_julia_bayesian_linear_regression_path = normpath(joinpath(artifact_dir, libmlpack_julia_bayesian_linear_regression_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_bayesian_linear_regression_handle = dlopen(libmlpack_julia_bayesian_linear_regression_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_bayesian_linear_regression_path))
-
-    global libmlpack_julia_cf_path = normpath(joinpath(artifact_dir, libmlpack_julia_cf_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_cf_handle = dlopen(libmlpack_julia_cf_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_cf_path))
-
-    global libmlpack_julia_dbscan_path = normpath(joinpath(artifact_dir, libmlpack_julia_dbscan_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_dbscan_handle = dlopen(libmlpack_julia_dbscan_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_dbscan_path))
-
-    global libmlpack_julia_decision_stump_path = normpath(joinpath(artifact_dir, libmlpack_julia_decision_stump_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_decision_stump_handle = dlopen(libmlpack_julia_decision_stump_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_decision_stump_path))
-
-    global libmlpack_julia_decision_tree_path = normpath(joinpath(artifact_dir, libmlpack_julia_decision_tree_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_decision_tree_handle = dlopen(libmlpack_julia_decision_tree_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_decision_tree_path))
-
-    global libmlpack_julia_det_path = normpath(joinpath(artifact_dir, libmlpack_julia_det_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_det_handle = dlopen(libmlpack_julia_det_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_det_path))
-
-    global libmlpack_julia_emst_path = normpath(joinpath(artifact_dir, libmlpack_julia_emst_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_emst_handle = dlopen(libmlpack_julia_emst_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_emst_path))
-
-    global libmlpack_julia_fastmks_path = normpath(joinpath(artifact_dir, libmlpack_julia_fastmks_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_fastmks_handle = dlopen(libmlpack_julia_fastmks_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_fastmks_path))
-
-    global libmlpack_julia_gmm_generate_path = normpath(joinpath(artifact_dir, libmlpack_julia_gmm_generate_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_gmm_generate_handle = dlopen(libmlpack_julia_gmm_generate_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_gmm_generate_path))
-
-    global libmlpack_julia_gmm_probability_path = normpath(joinpath(artifact_dir, libmlpack_julia_gmm_probability_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_gmm_probability_handle = dlopen(libmlpack_julia_gmm_probability_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_gmm_probability_path))
-
-    global libmlpack_julia_gmm_train_path = normpath(joinpath(artifact_dir, libmlpack_julia_gmm_train_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_gmm_train_handle = dlopen(libmlpack_julia_gmm_train_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_gmm_train_path))
-
-    global libmlpack_julia_hmm_generate_path = normpath(joinpath(artifact_dir, libmlpack_julia_hmm_generate_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_hmm_generate_handle = dlopen(libmlpack_julia_hmm_generate_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_hmm_generate_path))
-
-    global libmlpack_julia_hmm_loglik_path = normpath(joinpath(artifact_dir, libmlpack_julia_hmm_loglik_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_hmm_loglik_handle = dlopen(libmlpack_julia_hmm_loglik_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_hmm_loglik_path))
-
-    global libmlpack_julia_hmm_train_path = normpath(joinpath(artifact_dir, libmlpack_julia_hmm_train_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_hmm_train_handle = dlopen(libmlpack_julia_hmm_train_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_hmm_train_path))
-
-    global libmlpack_julia_hmm_viterbi_path = normpath(joinpath(artifact_dir, libmlpack_julia_hmm_viterbi_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_hmm_viterbi_handle = dlopen(libmlpack_julia_hmm_viterbi_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_hmm_viterbi_path))
-
-    global libmlpack_julia_hoeffding_tree_path = normpath(joinpath(artifact_dir, libmlpack_julia_hoeffding_tree_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_hoeffding_tree_handle = dlopen(libmlpack_julia_hoeffding_tree_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_hoeffding_tree_path))
-
-    global libmlpack_julia_image_converter_path = normpath(joinpath(artifact_dir, libmlpack_julia_image_converter_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_image_converter_handle = dlopen(libmlpack_julia_image_converter_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_image_converter_path))
-
-    global libmlpack_julia_kde_path = normpath(joinpath(artifact_dir, libmlpack_julia_kde_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_kde_handle = dlopen(libmlpack_julia_kde_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_kde_path))
-
-    global libmlpack_julia_kernel_pca_path = normpath(joinpath(artifact_dir, libmlpack_julia_kernel_pca_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_kernel_pca_handle = dlopen(libmlpack_julia_kernel_pca_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_kernel_pca_path))
-
-    global libmlpack_julia_kfn_path = normpath(joinpath(artifact_dir, libmlpack_julia_kfn_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_kfn_handle = dlopen(libmlpack_julia_kfn_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_kfn_path))
-
-    global libmlpack_julia_kmeans_path = normpath(joinpath(artifact_dir, libmlpack_julia_kmeans_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_kmeans_handle = dlopen(libmlpack_julia_kmeans_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_kmeans_path))
-
-    global libmlpack_julia_knn_path = normpath(joinpath(artifact_dir, libmlpack_julia_knn_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_knn_handle = dlopen(libmlpack_julia_knn_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_knn_path))
-
-    global libmlpack_julia_krann_path = normpath(joinpath(artifact_dir, libmlpack_julia_krann_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_krann_handle = dlopen(libmlpack_julia_krann_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_krann_path))
-
-    global libmlpack_julia_lars_path = normpath(joinpath(artifact_dir, libmlpack_julia_lars_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_lars_handle = dlopen(libmlpack_julia_lars_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_lars_path))
-
-    global libmlpack_julia_linear_regression_path = normpath(joinpath(artifact_dir, libmlpack_julia_linear_regression_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_linear_regression_handle = dlopen(libmlpack_julia_linear_regression_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_linear_regression_path))
-
-    global libmlpack_julia_linear_svm_path = normpath(joinpath(artifact_dir, libmlpack_julia_linear_svm_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_linear_svm_handle = dlopen(libmlpack_julia_linear_svm_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_linear_svm_path))
-
-    global libmlpack_julia_lmnn_path = normpath(joinpath(artifact_dir, libmlpack_julia_lmnn_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_lmnn_handle = dlopen(libmlpack_julia_lmnn_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_lmnn_path))
-
-    global libmlpack_julia_local_coordinate_coding_path = normpath(joinpath(artifact_dir, libmlpack_julia_local_coordinate_coding_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_local_coordinate_coding_handle = dlopen(libmlpack_julia_local_coordinate_coding_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_local_coordinate_coding_path))
-
-    global libmlpack_julia_logistic_regression_path = normpath(joinpath(artifact_dir, libmlpack_julia_logistic_regression_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_logistic_regression_handle = dlopen(libmlpack_julia_logistic_regression_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_logistic_regression_path))
-
-    global libmlpack_julia_lsh_path = normpath(joinpath(artifact_dir, libmlpack_julia_lsh_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_lsh_handle = dlopen(libmlpack_julia_lsh_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_lsh_path))
-
-    global libmlpack_julia_mean_shift_path = normpath(joinpath(artifact_dir, libmlpack_julia_mean_shift_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_mean_shift_handle = dlopen(libmlpack_julia_mean_shift_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_mean_shift_path))
-
-    global libmlpack_julia_nbc_path = normpath(joinpath(artifact_dir, libmlpack_julia_nbc_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_nbc_handle = dlopen(libmlpack_julia_nbc_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_nbc_path))
-
-    global libmlpack_julia_nca_path = normpath(joinpath(artifact_dir, libmlpack_julia_nca_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_nca_handle = dlopen(libmlpack_julia_nca_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_nca_path))
-
-    global libmlpack_julia_nmf_path = normpath(joinpath(artifact_dir, libmlpack_julia_nmf_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_nmf_handle = dlopen(libmlpack_julia_nmf_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_nmf_path))
-
-    global libmlpack_julia_pca_path = normpath(joinpath(artifact_dir, libmlpack_julia_pca_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_pca_handle = dlopen(libmlpack_julia_pca_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_pca_path))
-
-    global libmlpack_julia_perceptron_path = normpath(joinpath(artifact_dir, libmlpack_julia_perceptron_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_perceptron_handle = dlopen(libmlpack_julia_perceptron_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_perceptron_path))
-
-    global libmlpack_julia_preprocess_binarize_path = normpath(joinpath(artifact_dir, libmlpack_julia_preprocess_binarize_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_preprocess_binarize_handle = dlopen(libmlpack_julia_preprocess_binarize_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_preprocess_binarize_path))
-
-    global libmlpack_julia_preprocess_describe_path = normpath(joinpath(artifact_dir, libmlpack_julia_preprocess_describe_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_preprocess_describe_handle = dlopen(libmlpack_julia_preprocess_describe_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_preprocess_describe_path))
-
-    global libmlpack_julia_preprocess_one_hot_encoding_path = normpath(joinpath(artifact_dir, libmlpack_julia_preprocess_one_hot_encoding_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_preprocess_one_hot_encoding_handle = dlopen(libmlpack_julia_preprocess_one_hot_encoding_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_preprocess_one_hot_encoding_path))
-
-    global libmlpack_julia_preprocess_scale_path = normpath(joinpath(artifact_dir, libmlpack_julia_preprocess_scale_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_preprocess_scale_handle = dlopen(libmlpack_julia_preprocess_scale_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_preprocess_scale_path))
-
-    global libmlpack_julia_preprocess_split_path = normpath(joinpath(artifact_dir, libmlpack_julia_preprocess_split_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_preprocess_split_handle = dlopen(libmlpack_julia_preprocess_split_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_preprocess_split_path))
-
-    global libmlpack_julia_radical_path = normpath(joinpath(artifact_dir, libmlpack_julia_radical_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_radical_handle = dlopen(libmlpack_julia_radical_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_radical_path))
-
-    global libmlpack_julia_random_forest_path = normpath(joinpath(artifact_dir, libmlpack_julia_random_forest_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_random_forest_handle = dlopen(libmlpack_julia_random_forest_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_random_forest_path))
-
-    global libmlpack_julia_softmax_regression_path = normpath(joinpath(artifact_dir, libmlpack_julia_softmax_regression_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_softmax_regression_handle = dlopen(libmlpack_julia_softmax_regression_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_softmax_regression_path))
-
-    global libmlpack_julia_sparse_coding_path = normpath(joinpath(artifact_dir, libmlpack_julia_sparse_coding_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_sparse_coding_handle = dlopen(libmlpack_julia_sparse_coding_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_sparse_coding_path))
-
-    global libmlpack_julia_util_path = normpath(joinpath(artifact_dir, libmlpack_julia_util_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libmlpack_julia_util_handle = dlopen(libmlpack_julia_util_path, RTLD_LAZY | RTLD_DEEPBIND)
-    push!(LIBPATH_list, dirname(libmlpack_julia_util_path))
-
-    # Filter out duplicate and empty entries in our PATH and LIBPATH entries
-    filter!(!isempty, unique!(PATH_list))
-    filter!(!isempty, unique!(LIBPATH_list))
-    global PATH = join(PATH_list, ';')
-    global LIBPATH = join(vcat(LIBPATH_list, [Sys.BINDIR, joinpath(Sys.BINDIR, Base.LIBDIR, "julia"), joinpath(Sys.BINDIR, Base.LIBDIR)]), ';')
-
-    
+    JLLWrappers.@generate_init_header(boost_jll, armadillo_jll, OpenBLAS_jll)
+    JLLWrappers.@init_library_product(
+        libmlpack,
+        "bin\\libmlpack.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_adaboost,
+        "bin\\libmlpack_julia_adaboost.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_approx_kfn,
+        "bin\\libmlpack_julia_approx_kfn.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_bayesian_linear_regression,
+        "bin\\libmlpack_julia_bayesian_linear_regression.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_cf,
+        "bin\\libmlpack_julia_cf.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_dbscan,
+        "bin\\libmlpack_julia_dbscan.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_decision_stump,
+        "bin\\libmlpack_julia_decision_stump.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_decision_tree,
+        "bin\\libmlpack_julia_decision_tree.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_det,
+        "bin\\libmlpack_julia_det.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_emst,
+        "bin\\libmlpack_julia_emst.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_fastmks,
+        "bin\\libmlpack_julia_fastmks.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_gmm_generate,
+        "bin\\libmlpack_julia_gmm_generate.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_gmm_probability,
+        "bin\\libmlpack_julia_gmm_probability.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_gmm_train,
+        "bin\\libmlpack_julia_gmm_train.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_hmm_generate,
+        "bin\\libmlpack_julia_hmm_generate.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_hmm_loglik,
+        "bin\\libmlpack_julia_hmm_loglik.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_hmm_train,
+        "bin\\libmlpack_julia_hmm_train.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_hmm_viterbi,
+        "bin\\libmlpack_julia_hmm_viterbi.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_hoeffding_tree,
+        "bin\\libmlpack_julia_hoeffding_tree.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_image_converter,
+        "bin\\libmlpack_julia_image_converter.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_kde,
+        "bin\\libmlpack_julia_kde.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_kernel_pca,
+        "bin\\libmlpack_julia_kernel_pca.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_kfn,
+        "bin\\libmlpack_julia_kfn.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_kmeans,
+        "bin\\libmlpack_julia_kmeans.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_knn,
+        "bin\\libmlpack_julia_knn.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_krann,
+        "bin\\libmlpack_julia_krann.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_lars,
+        "bin\\libmlpack_julia_lars.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_linear_regression,
+        "bin\\libmlpack_julia_linear_regression.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_linear_svm,
+        "bin\\libmlpack_julia_linear_svm.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_lmnn,
+        "bin\\libmlpack_julia_lmnn.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_local_coordinate_coding,
+        "bin\\libmlpack_julia_local_coordinate_coding.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_logistic_regression,
+        "bin\\libmlpack_julia_logistic_regression.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_lsh,
+        "bin\\libmlpack_julia_lsh.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_mean_shift,
+        "bin\\libmlpack_julia_mean_shift.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_nbc,
+        "bin\\libmlpack_julia_nbc.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_nca,
+        "bin\\libmlpack_julia_nca.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_nmf,
+        "bin\\libmlpack_julia_nmf.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_pca,
+        "bin\\libmlpack_julia_pca.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_perceptron,
+        "bin\\libmlpack_julia_perceptron.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_preprocess_binarize,
+        "bin\\libmlpack_julia_preprocess_binarize.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_preprocess_describe,
+        "bin\\libmlpack_julia_preprocess_describe.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_preprocess_one_hot_encoding,
+        "bin\\libmlpack_julia_preprocess_one_hot_encoding.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_preprocess_scale,
+        "bin\\libmlpack_julia_preprocess_scale.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_preprocess_split,
+        "bin\\libmlpack_julia_preprocess_split.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_radical,
+        "bin\\libmlpack_julia_radical.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_random_forest,
+        "bin\\libmlpack_julia_random_forest.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_softmax_regression,
+        "bin\\libmlpack_julia_softmax_regression.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_sparse_coding,
+        "bin\\libmlpack_julia_sparse_coding.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libmlpack_julia_util,
+        "bin\\libmlpack_julia_util.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@generate_init_footer()
 end  # __init__()
