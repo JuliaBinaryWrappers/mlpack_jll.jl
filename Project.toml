@@ -1,6 +1,6 @@
 name = "mlpack_jll"
 uuid = "156a7db3-27ba-586e-a86b-f061da4f95ea"
-version = "3.4.2+1"
+version = "3.4.3+0"
 
 [deps]
 JLLWrappers = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
@@ -13,5 +13,5 @@ boost_jll = "28df3c45-c428-5900-9ff8-a3135698ca75"
 
 [compat]
 JLLWrappers = "1.2.0"
-julia = "1.0"
-boost_jll = "=1.71.0"
+julia = "1.7"
+boost_jll = "=1.76.0"
