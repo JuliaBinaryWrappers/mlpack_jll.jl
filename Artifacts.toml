@@ -1,288 +1,288 @@
 [[mlpack]]
 arch = "aarch64"
-git-tree-sha1 = "c9174c9bab2503d8bc5e1f0da53395ee646c69eb"
+git-tree-sha1 = "1e526fcc72587acfd5c779e622c2f230506632b2"
 os = "macos"
 
     [[mlpack.download]]
-    sha256 = "78e8971335c91fa40d4710edbda8cb802fb6639af8986a3441a09f568630f79a"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.aarch64-apple-darwin.tar.gz"
+    sha256 = "c594ab4ea9dbbc9649a5e810aa6d8adf179cefe170d7f84257061af7dc392323"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.aarch64-apple-darwin.tar.gz"
 [[mlpack]]
 arch = "aarch64"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "06e03b17f7fbfd835ce11e3b1aabf6da1e745d48"
+git-tree-sha1 = "6638589b21383bc11bcc0df668d025ff38913b8a"
 libc = "glibc"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "f260de398dd7dbb29f1eb5ee9e3074dd3873b225aa894b283bc408f03a77a2af"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.aarch64-linux-gnu-cxx03.tar.gz"
+    sha256 = "cfe2fa0d820e6333ba213f466d983a0b2099659993e2d2ee67b4d42eada75008"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.aarch64-linux-gnu-cxx03.tar.gz"
 [[mlpack]]
 arch = "aarch64"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "6ae79687411b23009a1f6b5ef0402a2a1ea410dc"
+git-tree-sha1 = "77ad1e152217b14bf95e249b4da3b389f311f069"
 libc = "glibc"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "735e624654f1003652765d8ac7b740f5ce305f28d75ad81a1eb6e3f12c4d9b3e"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.aarch64-linux-gnu-cxx11.tar.gz"
+    sha256 = "63cb8560768cbc041437e56c613454cebca39f11f93527c09c6e5da91222cb66"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.aarch64-linux-gnu-cxx11.tar.gz"
 [[mlpack]]
 arch = "aarch64"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "7a4aed557d4144a495ccdc6b4c5871b8664f729e"
+git-tree-sha1 = "36c99a1ed5b35dcb91f6f6630f342cb14f61f3d3"
 libc = "musl"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "68d7359b37d2664eed4d8fd0e75609466fc2b7c918bedf9e38f83ff48a0ceb1f"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.aarch64-linux-musl-cxx03.tar.gz"
+    sha256 = "90d17a97120ef5c3c15938adc6956c5a89f64c2a54d6485fd045ae9f48e0c35e"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.aarch64-linux-musl-cxx03.tar.gz"
 [[mlpack]]
 arch = "aarch64"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "3cba6a200f05e8bca39c0add0f6c14ff4e41b323"
+git-tree-sha1 = "b88edac8e03f53a60953528fb2ca30422f2a1391"
 libc = "musl"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "780093bf8859c87e837b9e43a35fdf21b344794268b77f25f354478e842e6571"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.aarch64-linux-musl-cxx11.tar.gz"
+    sha256 = "26a6463c78f083f3ecea6dd4a680e1c3069a6efcb0b1b15e89bbff9d3dda1440"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.aarch64-linux-musl-cxx11.tar.gz"
 [[mlpack]]
 arch = "armv6l"
 call_abi = "eabihf"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "b1ef940c9f2a4b3bd23e1a11694bc4af24ce5d32"
+git-tree-sha1 = "542b73519dba210be98f579b00d6a1dbe5b784cc"
 libc = "glibc"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "f3ce57bc9206ed0941e52dc783b859d9cf7227ac74189de771645fb921fd61ca"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.armv6l-linux-gnueabihf-cxx03.tar.gz"
+    sha256 = "9a07d66a3527873b065e76f78069f3ec249453ae60a0a3e4ad7119fb2eae9bc3"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.armv6l-linux-gnueabihf-cxx03.tar.gz"
 [[mlpack]]
 arch = "armv6l"
 call_abi = "eabihf"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "d5d4dcc80ac6a05b45a7f0a592e59fbbc45b02a5"
+git-tree-sha1 = "2c56f14fa657c534c04b39578ebbf255b369278a"
 libc = "glibc"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "48b8e428f7fb8c29bf6877d008063dfa712c766072380dba4bf66e902370b437"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.armv6l-linux-gnueabihf-cxx11.tar.gz"
+    sha256 = "cc3ec115f72e2a09bfb6dd4c5dbcbbb87c349d274913011b4242703bfafc9160"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.armv6l-linux-gnueabihf-cxx11.tar.gz"
 [[mlpack]]
 arch = "armv6l"
 call_abi = "eabihf"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "9807edd04c1fdd45a3f0cce8aca626e980fc487a"
+git-tree-sha1 = "37a380a1d73cef6f6e53582b76ff669b086b6bbd"
 libc = "musl"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "920f7c882e32c487891620a2548b03bd938ad2f4b1006dd83f43507284d7cd84"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.armv6l-linux-musleabihf-cxx03.tar.gz"
+    sha256 = "227718a671fb960537e7cc095f0e342d4bb248d6e4ac55d14c9b0953dcc128ec"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.armv6l-linux-musleabihf-cxx03.tar.gz"
 [[mlpack]]
 arch = "armv6l"
 call_abi = "eabihf"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "d9e00a272072bfe5a5e8cb2c0efcd833b409a982"
+git-tree-sha1 = "b00aa204b42236ad542c98ea34430476467d15a1"
 libc = "musl"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "3239b7485a6b1ed981bb18b53a45208738d0a05aa5c1c8e8b14cbae0413f5c13"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.armv6l-linux-musleabihf-cxx11.tar.gz"
+    sha256 = "0bf27e771833560629490f27889d7f92f50db460f57e71b70ce371cba6d145ef"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.armv6l-linux-musleabihf-cxx11.tar.gz"
 [[mlpack]]
 arch = "armv7l"
 call_abi = "eabihf"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "730669797374270fa884b6f4c5b65cc1dbe4b4f7"
+git-tree-sha1 = "de5255296e4f25c6bfb69d2ecb26371682068b56"
 libc = "glibc"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "606668af379d3a4974df7b498e4b87cd4c935fe4d10e1607a12199ae1a57db66"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.armv7l-linux-gnueabihf-cxx03.tar.gz"
+    sha256 = "a75fbddffc31864efff1984900ea3f4f920cfb2fb9a5dda97ecd2f35336120ec"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.armv7l-linux-gnueabihf-cxx03.tar.gz"
 [[mlpack]]
 arch = "armv7l"
 call_abi = "eabihf"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "88b718d00281459d492e9f1b896c796caf278374"
+git-tree-sha1 = "047a6c8d86f500d1161c973df948614955e0e807"
 libc = "glibc"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "af309d786f3086ae744dea0415137cbbfed9f5dec1240927cec02dda771a353b"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.armv7l-linux-gnueabihf-cxx11.tar.gz"
+    sha256 = "821094b9c625a081c13a0995a3698194b848a29129467df0ebfb0319d0e7ff66"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.armv7l-linux-gnueabihf-cxx11.tar.gz"
 [[mlpack]]
 arch = "armv7l"
 call_abi = "eabihf"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "72f7b9ace6ccc57e83301767dbbd8e2f99ce95ff"
+git-tree-sha1 = "2330a0b3b98f03b65e4f3bb445dfd762c56422e7"
 libc = "musl"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "ef9fa58cbed343e30e6ee3399b56ba693390474a21d5d3d2ebc4dfe39bf113e3"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.armv7l-linux-musleabihf-cxx03.tar.gz"
+    sha256 = "2281591ce1c5a2830b2cb3beab284ed8830e88c6ccca7d5182e0875af286f20c"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.armv7l-linux-musleabihf-cxx03.tar.gz"
 [[mlpack]]
 arch = "armv7l"
 call_abi = "eabihf"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "f28ebf334443af99c24f9cfcad3f0a162f7de347"
+git-tree-sha1 = "71b1527f5cd499df21a11eb7c493f0f55a0a2b19"
 libc = "musl"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "419acd3765078ca701da6a12f2948e1ede1c856b1b4b7531ceb999d77b9cafc0"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.armv7l-linux-musleabihf-cxx11.tar.gz"
+    sha256 = "777fe22231d3587fa74dde07c9d1951fa067cdba966a929f7b029e75f5a6832a"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.armv7l-linux-musleabihf-cxx11.tar.gz"
 [[mlpack]]
 arch = "i686"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "a3c8b031cdd6cd5cdca598bbe39c6da948b85144"
+git-tree-sha1 = "03fdeb3fedec1863bdafec0891d43f1c08ddde83"
 libc = "glibc"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "95c18abddd2e24a502bc3532bcb896d5569955ada270fcdbdc08394ba6893b63"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.i686-linux-gnu-cxx03.tar.gz"
+    sha256 = "d03bc352eef1d8c9911c3c0a3ac92cd67ef32bbea42adc16ce097228ede77199"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.i686-linux-gnu-cxx03.tar.gz"
 [[mlpack]]
 arch = "i686"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "f1d70acfd3f8b4fee6123e2cfdfce5189d126bef"
+git-tree-sha1 = "e4a3b5231381493f8805dc6d2177ab4ee2e3e68f"
 libc = "glibc"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "9f699397f7ac8da40b36228441c7310409b98bb25f2bae49678048254561c8f9"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.i686-linux-gnu-cxx11.tar.gz"
+    sha256 = "06e17e027d2770b8a43a8947a285dc57cebcf44ef1d9298f6c9033fb755707eb"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.i686-linux-gnu-cxx11.tar.gz"
 [[mlpack]]
 arch = "i686"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "0cdf659ce64bb03939468eceb0090c7610b41473"
+git-tree-sha1 = "af34c845f419390030fc69fa210cb662ce4d6547"
 libc = "musl"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "014ea4d05142dbe801f4aa3a6c877d33958049598a25c56a3e0de9d955610678"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.i686-linux-musl-cxx03.tar.gz"
+    sha256 = "be76295ec7d49009e18deb2a94d1a24a93da2b7d69590dff151620886fb8ca2b"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.i686-linux-musl-cxx03.tar.gz"
 [[mlpack]]
 arch = "i686"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "81c6bdb1472b693093d8f8a79e5b94e6f7d0a113"
+git-tree-sha1 = "14a1dcf8bb9adfa12f2bf6431fb3fa36197e4eeb"
 libc = "musl"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "1fc4057a794b9d1bb4065d2ad416b19823556380ad23485c837f1e8baa5480b0"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.i686-linux-musl-cxx11.tar.gz"
+    sha256 = "774499f55c672eb094a3af800010adb594ce39146be3a96183c28a22d2f7ed61"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.i686-linux-musl-cxx11.tar.gz"
 [[mlpack]]
 arch = "i686"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "6b62714368c9f7b2174ef8de7e59aea9162f10a4"
+git-tree-sha1 = "84bb0bb86201029067b640407f4864cb9bfabb13"
 os = "windows"
 
     [[mlpack.download]]
-    sha256 = "bd1d702beb43d5f0944147257083979356672b1e63bad973d78bbb4320a0bff0"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.i686-w64-mingw32-cxx03.tar.gz"
+    sha256 = "e2a4e0f8920b5caab9d84076e1d045f2c89c7bd83e38844aab2852bcff95772b"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.i686-w64-mingw32-cxx03.tar.gz"
 [[mlpack]]
 arch = "i686"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "f4a30f812c93ad0959aab10c1008a5211aa69c96"
+git-tree-sha1 = "03c3d5b8da7fed2aa190d6132fa34cede439ffef"
 os = "windows"
 
     [[mlpack.download]]
-    sha256 = "3213f817d0aca235c84ef15ed90a24010bbce28b044f347257e73139f0723c19"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.i686-w64-mingw32-cxx11.tar.gz"
+    sha256 = "1199e525f3b85dc3da9971d1f6753eefb463c8db46785b4e6e4fc30f05272229"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.i686-w64-mingw32-cxx11.tar.gz"
 [[mlpack]]
 arch = "powerpc64le"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "682e45b1db0f236e445488f589a17f95645d7b62"
+git-tree-sha1 = "6fe0b67db316cf38cce44efaf8d80a85226d6a65"
 libc = "glibc"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "56cb5eff10f28fbb3579d68c517e0a4c0b35446cd446a7dfc5bbd53fe867d8d0"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.powerpc64le-linux-gnu-cxx03.tar.gz"
+    sha256 = "7aacaa94888982780e8f4ce57ce7fd1e85f147fa77ce31e7e3bd6911a6740f81"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.powerpc64le-linux-gnu-cxx03.tar.gz"
 [[mlpack]]
 arch = "powerpc64le"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "385bbb17fc5044e3047b5324be8ba602ee2b30de"
+git-tree-sha1 = "a93b2fe4181ec7fb216d3bb42731c4b30325e1bd"
 libc = "glibc"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "3fe95663493db8ecc9afd049d6c4e44bdc31df32e1ef3c04abd2204c7b7912ea"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.powerpc64le-linux-gnu-cxx11.tar.gz"
+    sha256 = "8368eaddb88244ce1a3c59a67319baf64d123b18e61c66e0f649fe1885d147ee"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.powerpc64le-linux-gnu-cxx11.tar.gz"
 [[mlpack]]
 arch = "x86_64"
-git-tree-sha1 = "27a7a5b98e7d58d68365b90232bd7f9f3d14440a"
+git-tree-sha1 = "1b6b9bea70643fbe5a8e0b588fc46b56681b26b8"
 os = "macos"
 
     [[mlpack.download]]
-    sha256 = "3d587dedf7d6f019d3bf8a3995f83b8b5791730a029115cac90325d04aa666c0"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.x86_64-apple-darwin.tar.gz"
+    sha256 = "5a822090a261c5c77456d78ba4bda48bcdd16ae89f21009774e7783a0daa583e"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.x86_64-apple-darwin.tar.gz"
 [[mlpack]]
 arch = "x86_64"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "25f7edbcdf7988bd983b5998824eae14484961cf"
+git-tree-sha1 = "589a8542696ce638d94a3a619a2a4a707c0e6dd8"
 libc = "glibc"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "204726bc0879b25a0bcc7cf9a28f8e2da8302c67d8b3bf2a10a55026dd9966c5"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.x86_64-linux-gnu-cxx03.tar.gz"
+    sha256 = "db991b47d15ff461d9d0ca3ada52866c24b4e4f42728c5cd5253194cfb5b3ca2"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.x86_64-linux-gnu-cxx03.tar.gz"
 [[mlpack]]
 arch = "x86_64"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "e7e4ec02f884a8d97243801c6b64bf74427ae1c6"
+git-tree-sha1 = "f3c3feb060c76c653c6486f11419686a5b6162ef"
 libc = "glibc"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "826091158a8c3a1622736b66c4d043bd2259e623149fccd6f7e514abf3c21b8f"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.x86_64-linux-gnu-cxx11.tar.gz"
+    sha256 = "5866dee173ed8574ad111850400fd2c7e6c812d087735d02435b99b9b155b5b6"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.x86_64-linux-gnu-cxx11.tar.gz"
 [[mlpack]]
 arch = "x86_64"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "b0ba4abf1373f7d18964b895a7aaa201e059e99b"
+git-tree-sha1 = "406b57c3a3ecb595ac3efc70cdbad5f7bbb28920"
 libc = "musl"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "a2004f5d1bcd03b05f9b5ebad0e541643ee9c0a8455f4f908e4e521754d49dbe"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.x86_64-linux-musl-cxx03.tar.gz"
+    sha256 = "cf0e03bd8b3b807f9336f7a0607fc7715d1f760b3a1a6e57392e92cddcc6388c"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.x86_64-linux-musl-cxx03.tar.gz"
 [[mlpack]]
 arch = "x86_64"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "1da3f158125bcea38cd7989cca48dfd99ba356f1"
+git-tree-sha1 = "05f14f72b3048a40deacac0933eca44df5c1dd49"
 libc = "musl"
 os = "linux"
 
     [[mlpack.download]]
-    sha256 = "9ebfecdbae92b2cac5cde26b396a9a12154eeef30aaba68d55079b910230d073"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.x86_64-linux-musl-cxx11.tar.gz"
+    sha256 = "0c1a689f184da15121ed3dbda8f03b4bf0974398406ab7b62899a52cc82b569b"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.x86_64-linux-musl-cxx11.tar.gz"
 [[mlpack]]
 arch = "x86_64"
-git-tree-sha1 = "0eda1b931cc78cdb05bcb7fdc3450f98e6f89d18"
+git-tree-sha1 = "32af2a9767472b0a28350f8f4dc785d439e01cf4"
 os = "freebsd"
 
     [[mlpack.download]]
-    sha256 = "2e66079a2f9e0ec0788862f4b9fd12900994a96b8b4b14ddc19b4595d099703d"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.x86_64-unknown-freebsd.tar.gz"
+    sha256 = "385d33b0ea1464f8719d1d1dd1caaa839e0a7c7107f49552c5ec44f0786c0213"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.x86_64-unknown-freebsd.tar.gz"
 [[mlpack]]
 arch = "x86_64"
 cxxstring_abi = "cxx03"
-git-tree-sha1 = "53ecde5900b4b129032747691f85c496ed0bdef4"
+git-tree-sha1 = "c6f2778ccc9b7ef09b6553309dc43200a335904a"
 os = "windows"
 
     [[mlpack.download]]
-    sha256 = "f03aafc08b6bc859c2a248294e7da265636ccde84f5b171a4e15c613b7ca460e"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.x86_64-w64-mingw32-cxx03.tar.gz"
+    sha256 = "32e4cbfd106ea4cf5ca8d3e771ddedb3475d1db119b1d4578e28a23d746b235d"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.x86_64-w64-mingw32-cxx03.tar.gz"
 [[mlpack]]
 arch = "x86_64"
 cxxstring_abi = "cxx11"
-git-tree-sha1 = "86d46c3e3120f51981421d30cb53feaea9655267"
+git-tree-sha1 = "89e5f56bc5f76860c0140e3c76852a64f2b2d97d"
 os = "windows"
 
     [[mlpack.download]]
-    sha256 = "9346fac56e8a62fe442c5def92e19db6ba87854c239893abd7b69b41301a58ed"
-    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.4.0+0/mlpack.v4.4.0.x86_64-w64-mingw32-cxx11.tar.gz"
+    sha256 = "c3443b375b3ace85fbc353efe07156270cd91cffac817a7fad8c9b3ddaf62b8c"
+    url = "https://github.com/JuliaBinaryWrappers/mlpack_jll.jl/releases/download/mlpack-v4.5.0+0/mlpack.v4.5.0.x86_64-w64-mingw32-cxx11.tar.gz"
