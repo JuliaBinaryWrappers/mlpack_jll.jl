@@ -5,5 +5,5 @@ using Base: UUID
 import JLLWrappers
 
 JLLWrappers.@generate_main_file_header("mlpack")
-JLLWrappers.@generate_main_file("mlpack", UUID("156a7db3-27ba-586e-a86b-f061da4f95ea"))
+JLLWrappers.@generate_main_file("mlpack", Base.UUID("156a7db3-27ba-586e-a86b-f061da4f95ea"))
 end  # module mlpack_jll
